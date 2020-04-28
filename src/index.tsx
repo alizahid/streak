@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { Header, Spinner } from './components'
-import { Home, Profile, SignIn } from './scenes'
+import { CheckIn, Home, Profile, SignIn } from './scenes'
 import { unregister } from './serviceWorker'
 import { useAuth } from './store'
 
@@ -38,6 +38,9 @@ const Streak: FunctionComponent = () => {
         </Route>
         <Route path="/sign-in">
           <SignIn />
+        </Route>
+        <Route path="/check-in">
+          <CheckIn />
         </Route>
         <Route path="/profile">
           <Profile />
