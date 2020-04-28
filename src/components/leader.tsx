@@ -14,7 +14,7 @@ export const Leader: FunctionComponent<Props> = ({ leader }) => (
     <div className="flex-1 ml-8">
       <div className="text-2xl font-medium break-all">{leader.user.name}</div>
       {leader.user.country && leader.user.city && (
-        <div className="mt-2 break-all">
+        <div className="mt-2">
           {leader.user.city}, {leader.user.country}
         </div>
       )}

@@ -12,7 +12,7 @@ export const Header: FunctionComponent = () => {
 
   return (
     <header className="leading-none flex items-center justify-between">
-      <h2 className="text-2xl font-semibold text-teal-200 m-8">
+      <h2 className="text-xl font-semibold text-teal-200 m-8">
         #stayhomechallenge
       </h2>
       <a
