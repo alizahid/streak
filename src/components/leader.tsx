@@ -13,11 +13,7 @@ export const Leader: FunctionComponent<Props> = ({ leader }) => (
     </aside>
     <div className="flex-1 ml-8">
       <div className="text-2xl font-medium break-all">{leader.user.name}</div>
-      {leader.user.country && leader.user.city && (
-        <div className="mt-2">
-          {leader.user.city}, {leader.user.country}
-        </div>
-      )}
+      {leader.user.city && <div className="mt-2">{leader.user.city}</div>}
       <div className="mt-4 text-gray-700">{leader.streak} days</div>
     </div>
   </article>
