@@ -1,0 +1,53 @@
+/* fonts */
+
+@import url('https://rsms.me/inter/inter.css');
+
+/* tailwind */
+
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
+
+/* global */
+
+a {
+  @apply text-teal-700 transition duration-300;
+}
+
+a:hover {
+  @apply text-teal-500;
+}
+
+body {
+  @apply bg-teal-600 text-white font-sans cursor-default max-w-2xl mx-auto;
+}
+
+h1 {
+  @apply text-4xl font-semibold;
+}
+
+table {
+  @apply bg-white text-black rounded w-full;
+}
+
+table tbody tr {
+  @apply border-t border-gray-200;
+}
+
+table td,
+table th {
+  @apply text-left align-middle p-4;
+}
+
+table th {
+  @apply font-semibold;
+}
+
+/* layout */
+
+main {
+  @apply m-8;
+}
