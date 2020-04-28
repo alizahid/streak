@@ -15,4 +15,6 @@ firebase.initializeApp({
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET
 })
 
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+
 export { firebase }

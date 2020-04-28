@@ -1,38 +1,30 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 
-import { Footer, Header } from '../components'
+import { Leader, Spinner } from '../components'
+import { useLeaderboard } from '../store'
 
-export const Home: FunctionComponent = () => (
-  <>
-    <Header />
+export const Home: FunctionComponent = () => {
+  const [{ fetching, leaders }, { destroy, fetch }] = useLeaderboard()
 
+  useEffect(() => {
+    fetch()
+
+    return () => {
+      destroy()
+    }
+  }, [destroy, fetch])
+
+  return (
     <main>
       <h1>Leaderboard</h1>
-      <div className="overflow-x-auto">
-        <table className="mt-8 leading-none">
-          <thead>
-            <tr>
-              <th className="text-center">Rank</th>
-              <th>Name</th>
-              <th className="text-center">Days</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="text-center">1</td>
-              <td>mildpanda</td>
-              <td className="text-center">45</td>
-            </tr>
-            <tr>
-              <td className="text-center">2</td>
-              <td>MadamePompadour</td>
-              <td className="text-center">4</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {fetching && <Spinner className="my-12" />}
+      {leaders.length > 0 && (
+        <section className="mt-8">
+          {leaders.map((leader, index) => (
+            <Leader key={index} leader={leader} />
+          ))}
+        </section>
+      )}
     </main>
-
-    <Footer />
-  </>
-)
+  )
+}

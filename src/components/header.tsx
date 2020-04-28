@@ -5,9 +5,11 @@ import { img_close, img_menu } from '../assets'
 import { useAuth } from '../store'
 
 export const Header: FunctionComponent = () => {
-  const [{ signedIn }] = useAuth()
+  const [{ signedIn }, { signOut }] = useAuth()
 
   const [visible, setVisible] = useState(false)
+
+  const onClick = () => setVisible(false)
 
   return (
     <header className="leading-none flex items-center justify-between">
@@ -30,27 +32,50 @@ export const Header: FunctionComponent = () => {
       </a>
       {visible && (
         <nav className="flex flex-col text-center fixed top-0 left-0 w-screen h-screen z-10 bg-menu flex items-center justify-center font-medium text-3xl">
-          <Link className="p-4 text-white hover:text-teal-900" to="/">
+          <Link
+            className="p-4 text-white hover:text-teal-500"
+            onClick={onClick}
+            to="/">
             Leaderboard
           </Link>
-          <Link className="p-4 text-white hover:text-teal-900" to="/about">
+          <Link
+            className="p-4 text-white hover:text-teal-500"
+            onClick={onClick}
+            to="/about">
             About
           </Link>
           {signedIn ? (
             <>
               <Link
-                className="p-4 text-white hover:text-teal-900"
+                className="p-4 text-white hover:text-teal-500"
+                onClick={onClick}
+                to="/check-in">
+                Check in
+              </Link>
+              <Link
+                className="p-4 text-white hover:text-teal-500"
+                onClick={onClick}
                 to="/profile">
                 Profile
               </Link>
-              <Link
-                className="p-4 text-white hover:text-teal-900"
-                to="/sign-out">
+              <a
+                className="p-4 text-white hover:text-teal-500"
+                href="#sign-out"
+                onClick={(event) => {
+                  event.preventDefault()
+
+                  signOut()
+
+                  setVisible(false)
+                }}>
                 Sign out
-              </Link>
+              </a>
             </>
           ) : (
-            <Link className="p-4 text-white hover:text-teal-900" to="/sign-in">
+            <Link
+              className="p-4 text-white hover:text-teal-500"
+              onClick={onClick}
+              to="/sign-in">
               Sign in
             </Link>
           )}

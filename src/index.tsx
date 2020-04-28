@@ -4,7 +4,8 @@ import React, { FunctionComponent, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { Home } from './scenes'
+import { Header } from './components'
+import { Home, SignIn } from './scenes'
 import { unregister } from './serviceWorker'
 import { useAuth } from './store'
 
@@ -20,15 +21,18 @@ const Streak: FunctionComponent = () => {
   }, [destroy, initialise])
 
   return (
-    <React.StrictMode>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter>
+      <Header />
+
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/sign-in">
+          <SignIn />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   )
 }
 

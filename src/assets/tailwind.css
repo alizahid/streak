@@ -22,32 +22,55 @@ a:hover {
 }
 
 body {
-  @apply bg-teal-600 text-white font-sans cursor-default max-w-2xl mx-auto;
+  @apply bg-teal-600 text-black font-sans cursor-default max-w-2xl mx-auto;
 }
 
 h1 {
-  @apply text-4xl font-semibold;
-}
-
-table {
-  @apply bg-white text-black rounded w-full;
-}
-
-table tbody tr {
-  @apply border-t border-gray-200;
-}
-
-table td,
-table th {
-  @apply text-left align-middle p-4;
-}
-
-table th {
-  @apply font-semibold;
+  @apply text-4xl font-semibold leading-none;
 }
 
 /* layout */
 
+#root {
+  @apply flex flex-col min-h-screen;
+}
+
 main {
-  @apply m-8;
+  @apply flex-1 bg-white rounded-lg p-8 mx-4 mb-8 shadow;
+}
+
+/* components */
+
+.spinner {
+  @apply h-8 w-8 relative mx-auto;
+
+  animation: spinner 1s linear infinite;
+}
+
+.spinner:after,
+.spinner:before {
+  @apply rounded-full block h-full w-full absolute;
+
+  border: 2px solid white;
+  content: '';
+}
+
+.spinner:after {
+  border-top-color: #234e52;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* firebase */
+
+.firebaseui-container {
+  @apply bg-transparent;
 }

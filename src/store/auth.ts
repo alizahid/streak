@@ -1,10 +1,11 @@
 import { createHook, createStore, StoreActionApi } from 'react-sweet-state'
 
-import { firebase } from '../lib'
+import { firebase, username } from '../lib'
 
 interface State {
   initialising: boolean
   signedIn: boolean
+  signingIn: boolean
   signingOut: boolean
 
   unsubscribe: () => void
@@ -13,6 +14,7 @@ interface State {
 const initialState: State = {
   initialising: true,
   signedIn: false,
+  signingIn: false,
   signingOut: false,
   unsubscribe: () => {}
 }
@@ -30,6 +32,30 @@ const actions = {
   initialise: () => async ({ getState, setState }: StoreApi) => {
     getState().unsubscribe()
 
+    firebase
+      .auth()
+      .getRedirectResult()
+      .then(async (result) => {
+        setState({
+          signingIn: true
+        })
+
+        if (result.additionalUserInfo?.isNewUser && result.user) {
+          await firebase
+            .firestore()
+            .collection('users')
+            .doc(result.user.uid)
+            .set({
+              createdAt: new Date(),
+              name: username()
+            })
+        }
+
+        setState({
+          signingIn: false
+        })
+      })
+
     const unsubscribe = firebase.auth().onAuthStateChanged(async (user) =>
       setState({
         initialising: false,
@@ -39,6 +65,19 @@ const actions = {
 
     setState({
       unsubscribe
+    })
+  },
+  signIn: () => async ({ setState }: StoreApi) => {
+    setState({
+      signingIn: true
+    })
+
+    const provider = new firebase.auth.GoogleAuthProvider()
+
+    await firebase.auth().signInWithRedirect(provider)
+
+    setState({
+      signingIn: false
     })
   },
   signOut: () => async ({ setState }: StoreApi) => {
