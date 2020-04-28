@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { img_close, img_menu } from '../assets'
 import { useAuth } from '../store'
 
 export const Header: FunctionComponent = () => {
@@ -27,7 +26,7 @@ export const Header: FunctionComponent = () => {
         <img
           alt="Menu"
           className="h-6 w-6"
-          src={visible ? img_close : img_menu}
+          src={`/img/${visible ? 'close' : 'menu'}.svg`}
         />
       </a>
       {visible && (

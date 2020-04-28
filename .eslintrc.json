@@ -29,7 +29,7 @@
     "@typescript-eslint/camelcase": [
       "error",
       {
-        "allow": ["img_*"]
+        "allow": ["data_*", "img_*"]
       }
     ],
     "@typescript-eslint/explicit-function-return-type": "off",

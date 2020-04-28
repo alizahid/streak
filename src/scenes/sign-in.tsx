@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { img_google } from '../assets'
 import { useAuth } from '../store'
 
 export const SignIn: FunctionComponent = () => {
@@ -12,13 +11,13 @@ export const SignIn: FunctionComponent = () => {
   }
 
   return (
-    <main className="mb-20">
+    <main>
       <h1>Sign in</h1>
       <button
-        className="bg-white rounded flex items-center text-black text-lg block p-4 mt-10 shadow"
+        className="bg-white rounded flex items-center text-black text-lg block p-4 mt-8 shadow"
         disabled={signingIn}
         onClick={signIn}>
-        <img alt="Google" className="h-6 w-6 mr-4" src={img_google} />
+        <img alt="Google" className="h-6 w-6 mr-4" src="/img/google.svg" />
         Sign in with Google
       </button>
     </main>

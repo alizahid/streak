@@ -22,7 +22,40 @@ a:hover {
 }
 
 body {
-  @apply bg-teal-600 text-black font-sans cursor-default max-w-2xl mx-auto;
+  @apply bg-teal-600 text-black font-sans cursor-default max-w-2xl mx-auto outline-none;
+}
+
+form label {
+  @apply block my-8;
+}
+
+form label span {
+  @apply block mb-2 font-medium;
+}
+
+form button,
+form input,
+form select {
+  @apply appearance-none bg-gray-200 p-4 rounded w-full;
+}
+
+form button {
+  @apply bg-teal-500 text-center text-white font-medium px-8 transition duration-300;
+}
+
+form button:hover {
+  @apply bg-teal-400;
+}
+
+form button:active {
+  @apply bg-teal-600;
+}
+
+form select {
+  background-image: url('/img/expand.svg');
+  background-position: calc(100% - 1rem) center;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
 }
 
 h1 {
