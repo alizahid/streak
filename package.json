@@ -4,7 +4,7 @@
   "scripts": {
     "build": "react-scripts build",
     "lint": "eslint src --ext ts,tsx",
-    "prebuild": "postcss src/assets/tailwind.css -o src/assets/index.css -w",
+    "prebuild": "postcss src/assets/tailwind.css -o src/assets/index.css",
     "prestart": "postcss src/assets/tailwind.css -o src/assets/index.css",
     "start": "react-scripts start"
   },
