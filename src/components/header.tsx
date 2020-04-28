@@ -14,7 +14,7 @@ export const Header: FunctionComponent = () => {
   return (
     <header className="leading-none flex items-center justify-between">
       <h2 className="text-2xl font-semibold text-teal-200 m-8">
-        COVID-19 Streak
+        #stayhomechallenge
       </h2>
       <a
         className="p-8 z-20"
