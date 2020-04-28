@@ -67,12 +67,15 @@ const actions = {
       unsubscribe
     })
   },
-  signIn: () => async ({ setState }: StoreApi) => {
+  signIn: (prov: 'facebook' | 'google') => async ({ setState }: StoreApi) => {
     setState({
       signingIn: true
     })
 
-    const provider = new firebase.auth.GoogleAuthProvider()
+    const provider =
+      prov === 'google'
+        ? new firebase.auth.GoogleAuthProvider()
+        : new firebase.auth.FacebookAuthProvider()
 
     await firebase.auth().signInWithRedirect(provider)
 
