@@ -12,9 +12,11 @@ export const Header: FunctionComponent = () => {
 
   return (
     <header className="leading-none flex items-center justify-between">
-      <h2 className="text-xl font-semibold text-teal-200 m-8">
-        #stayhomechallenge
-      </h2>
+      <Link to="/">
+        <h2 className="text-xl font-semibold text-teal-200 m-8">
+          #stayhomechallenge
+        </h2>
+      </Link>
       <a
         className="p-8 z-20"
         href="#menu"
