@@ -39,12 +39,6 @@ export const Header: FunctionComponent = () => {
             to="/">
             Leaderboard
           </Link>
-          <Link
-            className="p-4 text-white hover:text-teal-500"
-            onClick={onClick}
-            to="/about">
-            About
-          </Link>
           {signedIn ? (
             <>
               <Link
@@ -80,6 +74,12 @@ export const Header: FunctionComponent = () => {
               Sign in
             </Link>
           )}
+          <Link
+            className="p-4 text-white hover:text-teal-500"
+            onClick={onClick}
+            to="/about">
+            About
+          </Link>
         </nav>
       )}
     </header>

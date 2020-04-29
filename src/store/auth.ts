@@ -32,29 +32,14 @@ const actions = {
   initialise: () => async ({ getState, setState }: StoreApi) => {
     getState().unsubscribe()
 
-    firebase
-      .auth()
-      .getRedirectResult()
-      .then(async (result) => {
-        setState({
-          signingIn: true
-        })
+    const result = await firebase.auth().getRedirectResult()
 
-        if (result.additionalUserInfo?.isNewUser && result.user) {
-          await firebase
-            .firestore()
-            .collection('users')
-            .doc(result.user.uid)
-            .set({
-              createdAt: new Date(),
-              name: username()
-            })
-        }
-
-        setState({
-          signingIn: false
-        })
+    if (result && result.additionalUserInfo?.isNewUser && result.user) {
+      await firebase.firestore().collection('users').doc(result.user.uid).set({
+        createdAt: new Date(),
+        name: username()
       })
+    }
 
     const unsubscribe = firebase.auth().onAuthStateChanged(async (user) =>
       setState({
