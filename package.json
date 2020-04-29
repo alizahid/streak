@@ -1,5 +1,5 @@
 {
-  "name": "streak",
+  "name": "streak-web",
   "private": true,
   "scripts": {
     "build": "react-scripts build",
