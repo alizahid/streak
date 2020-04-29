@@ -1,3 +1,4 @@
+export { About } from './about'
 export { CheckIn } from './check-in'
 export { Home } from './home'
 export { Profile } from './profile'
