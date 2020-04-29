@@ -37,7 +37,8 @@ const actions = {
     if (result && result.additionalUserInfo?.isNewUser && result.user) {
       await firebase.firestore().collection('users').doc(result.user.uid).set({
         createdAt: new Date(),
-        name: username()
+        name: username(),
+        streak: 0
       })
     }
 
