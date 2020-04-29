@@ -41,8 +41,9 @@ export const Profile: FunctionComponent = () => {
   return (
     <main>
       <h1>Profile</h1>
-      {fetching && <Spinner className="my-12" />}
-      {user && (
+      {fetching ? (
+        <Spinner className="my-12" />
+      ) : user ? (
         <form
           className="mt-8"
           onSubmit={(event) => {
@@ -98,7 +99,7 @@ export const Profile: FunctionComponent = () => {
           )}
           <button disabled={updating}>{updating ? 'Saving' : 'Save'}</button>
         </form>
-      )}
+      ) : null}
     </main>
   )
 }

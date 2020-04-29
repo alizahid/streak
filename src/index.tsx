@@ -23,7 +23,7 @@ const Streak: FunctionComponent = () => {
   if (initialising) {
     return (
       <div className="fixed h-screen w-screen flex items-center justify-center left-0 top-0">
-        <Spinner />
+        <Spinner light />
       </div>
     )
   }

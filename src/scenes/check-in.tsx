@@ -31,7 +31,7 @@ export const CheckIn: FunctionComponent = () => {
     <main>
       <h1>Check in</h1>
       {fetching ? (
-        <Spinner className="mt-8" />
+        <Spinner className="my-12" />
       ) : checkedInToday ? (
         <p className="mt-8">You have already checked in today.</p>
       ) : (

@@ -75,35 +75,34 @@ main {
 /* components */
 
 .spinner {
-  @apply h-8 w-8 relative mx-auto;
-
-  animation: spinner 1s linear infinite;
+  @apply flex ml-auto mr-auto text-center w-8;
 }
 
-.spinner:after,
-.spinner:before {
-  @apply rounded-full block h-full w-full absolute;
+.spinner > div {
+  @apply rounded-full h-2 w-2;
 
-  border: 2px solid white;
-  content: '';
+  animation: spinner 1.4s infinite ease-in-out both;
 }
 
-.spinner:after {
-  border-top-color: #234e52;
+.spinner .bounce1 {
+  @apply mr-1;
+
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  @apply mr-1;
+
+  animation-delay: -0.16s;
 }
 
 @keyframes spinner {
-  from {
-    transform: rotate(0deg);
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
   }
-
-  to {
-    transform: rotate(360deg);
+  40% {
+    transform: scale(1);
   }
-}
-
-/* firebase */
-
-.firebaseui-container {
-  @apply bg-transparent;
 }
