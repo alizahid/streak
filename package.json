@@ -1,6 +1,12 @@
 {
   "name": "streak-web",
+  "license": "MIT",
   "private": true,
+  "author": {
+    "name": "Ali Zahid",
+    "email": "ali.zahid@live.com",
+    "url": "https://alizahid.dev"
+  },
   "scripts": {
     "build": "react-scripts build",
     "lint": "eslint src --ext ts,tsx",
